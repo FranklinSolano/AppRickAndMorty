@@ -10,72 +10,52 @@ import UIKit
 
 final class LoginScreen: UIView {
     
-    lazy var emailLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Email:"
-        return label
-    }()
-    
-    lazy var emailTextFiel: UITextField = {
-       let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Digite seu email"
-        textField.backgroundColor = .white
-        return textField
-    }()
-    
-    lazy var passwordLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Password:"
-        return label
-    }()
-    
-    lazy var passwordTextFiel: UITextField = {
-       let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Digite sua senha"
-        textField.backgroundColor = .white
-        return textField
-    }()
-    
-    lazy var forgotPasswordButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("ForgotPassword?", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
-    
-    lazy var loginButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Login", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .blue
-        return button
-    }()
-    
-    
-    lazy var registerButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Nao tem conta? Registra-se", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
+    private lazy var emailLabel: Labelling = DSLabelAdapter()
+    private lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
+    private lazy var passwordLabel: Labelling = DSLabelAdapter()
+    private lazy var passwordTextFiel: TextFielding = DSTextFieldAdapter()
+    private lazy var forgotPasswordButton: Buttoning = DSButtonTitlesAdapter()
+    private lazy var loginButton:Buttoning = DSButtonAdapter()
+    private lazy var registerButton: Buttoning = DSButtonTitlesAdapter()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
+        backgroundColor = .darkGray
         configElements()
         configConstraints()
+        configLabel()
+        configTextField()
+        configButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configLabel(){
+        emailLabel.setDTO(.init(text: "Email:", textColor: .black, font: UIFont.systemFont(ofSize: 14), alignment: .left, numberOfLines: 0))
+        passwordLabel.setDTO(.init(text: "Password", textColor: .black, font: UIFont.systemFont(ofSize: 14), alignment: .left, numberOfLines: 0))
+    }
+    
+    private func configTextField(){
+        emailTextFiel.setDTO(.init(placeholder: "Digite seu email", isSecureText: false))
+        passwordTextFiel.setDTO(.init(placeholder: "Digite sua senha", isSecureText: true))
+    }
+    
+    private func configButton(){
+        forgotPasswordButton.setDTO(.init(title: "ForgotPassword?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
+        forgotPasswordButton.onClick {
+            
+        }
+        loginButton.setDTO(.init(title: "Login?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
+        loginButton.onClick {
+            
+        }
+        registerButton.setDTO(.init(title: "Nao tem conta? Registra-se?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
+        registerButton.onClick {
+            
+        }
     }
     
     private func configElements(){

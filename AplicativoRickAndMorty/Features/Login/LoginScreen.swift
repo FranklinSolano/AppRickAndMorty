@@ -21,12 +21,7 @@ final class LoginScreen: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .darkGray
-        configElements()
-        configConstraints()
-        configLabel()
-        configTextField()
-        configButton()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -58,19 +53,16 @@ final class LoginScreen: UIView {
         }
     }
     
-    private func configElements(){
-        addSubview(emailLabel)
-        addSubview(emailTextFiel)
-        addSubview(passwordLabel)
-        addSubview(passwordTextFiel)
-        addSubview(forgotPasswordButton)
-        addSubview(loginButton)
-        addSubview(registerButton)
+}
+
+
+extension LoginScreen: ViewCodeProtocol {
+    func configElementes() {
+        [emailLabel, emailTextFiel, passwordLabel, passwordTextFiel, forgotPasswordButton, loginButton, registerButton].forEach(addSubview)
     }
     
-    private func configConstraints(){
+    func configConstraints() {
         NSLayoutConstraint.activate([
-            
             
             emailLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 60),
             emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
@@ -101,5 +93,13 @@ final class LoginScreen: UIView {
             registerButton.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
+    
+    func configAdttionalConfigure() {
+        backgroundColor = .darkGray
+        configLabel()
+        configTextField()
+        configButton()
+    }
+    
     
 }

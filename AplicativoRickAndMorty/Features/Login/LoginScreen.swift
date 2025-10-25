@@ -10,9 +10,9 @@ import UIKit
 
 final class LoginScreen: UIView {
     
-    private lazy var emailLabel: Labelling = DSLabelAdapter()
+    private lazy var emailLabel: Labeling = DSLLabelAdapter()
     private lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
-    private lazy var passwordLabel: Labelling = DSLabelAdapter()
+    private lazy var passwordLabel: Labeling = DSLLabelAdapter()
     private lazy var passwordTextFiel: TextFielding = DSTextFieldAdapter()
     private lazy var forgotPasswordButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var loginButton:Buttoning = DSButtonAdapter()
@@ -29,8 +29,8 @@ final class LoginScreen: UIView {
     }
     
     private func configLabel(){
-        emailLabel.setDTO(.init(text: "Email:", textColor: .black, font: UIFont.systemFont(ofSize: 14), alignment: .left, numberOfLines: 0))
-        passwordLabel.setDTO(.init(text: "Password", textColor: .black, font: UIFont.systemFont(ofSize: 14), alignment: .left, numberOfLines: 0))
+        emailLabel.setDTO(with: .init(text: "Email:"))
+        passwordLabel.setDTO(with: .init(text: "Password:"))
     }
     
     private func configTextField(){

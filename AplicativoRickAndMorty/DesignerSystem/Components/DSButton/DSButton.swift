@@ -5,7 +5,6 @@
 //  Created by Franklin  Stilhano Solano on 24/10/25.
 //
 
-
 import UIKit
 
 struct ButtonDTO {
@@ -30,8 +29,8 @@ class DSButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.setTitleColor(.white, for: .normal)
-        self.backgroundColor = UIColor(red: 8/255, green: 127/255, blue: 1/255, alpha: 1)
+        self.setTitleColor(DSColors.textColorTitle, for: .normal)
+        self.backgroundColor = DSColors.primaryColor
         self.clipsToBounds = true
         self.layer.cornerRadius = 15
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +44,7 @@ class DSButton: UIButton {
 class DSButtonTitles: UIButton {
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.setTitleColor(.white, for: .normal)
+        self.setTitleColor(DSColors.textColorTitle, for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     

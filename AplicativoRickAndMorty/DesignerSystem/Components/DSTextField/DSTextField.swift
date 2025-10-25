@@ -41,11 +41,12 @@ class DSTextField: UITextField {
         self.clipsToBounds = true
         self.layer.cornerRadius = 15
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor(red: 8/255, green: 127/255, blue: 1/255, alpha: 1).cgColor
+        self.layer.borderColor = DSColors.primaryColor.cgColor
         self.autocapitalizationType = .none
         self.textColor = .white
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.backgroundColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.60)
+        self.backgroundColor = DSColors.backGroundColor
+        
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 0))
         self.leftView = paddingView
         self.leftViewMode = .always
@@ -57,7 +58,7 @@ class DSTextField: UITextField {
         self.isSecureTextEntry = dto.isSecureText
         self.attributedPlaceholder = NSAttributedString(
             string: dto.placeholder,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            attributes: [NSAttributedString.Key.foregroundColor: DSColors.textColorTitle]
         )
     }
   

@@ -10,15 +10,31 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var loginCoordinator: LoginCoordinating?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // Cria a janela principal
         let window = UIWindow(windowScene: windowScene)
-        let vc: LoginViewController = LoginViewController()
-        let navVC = UINavigationController(rootViewController: vc)
-        navVC.setNavigationBarHidden(true, animated: false)
-        window.rootViewController = navVC
+        
+        // Cria o UINavigationController
+        let navigationController = UINavigationController()
+        navigationController.setNavigationBarHidden(true, animated: false)
+        
+        // Cria o LoginViewController e o LoginCoordinator usando a LoginFactory
+        let loginFactory = LoginFactory()
+        let (loginVC, coordinator) = loginFactory.makeFactory(navigation: navigationController)
+        
+        // Mantém uma referência forte ao Coordinatorpod inst
+        self.loginCoordinator = coordinator
+        
+        // Define o LoginViewController como root do UINavigationController
+        navigationController.viewControllers = [loginVC]
+        
+        // Define o UINavigationController como rootViewController da janela
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         self.window = window
     }

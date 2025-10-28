@@ -7,17 +7,20 @@
 
 import UIKit
 
+//MARK: - Protocol
 protocol RegisterScreenProtocol: AnyObject {
     func actionBackButton()
     func actionRegisterButton()
 }
 
+//MARK: - RegisterScreen
 final class RegisterScreen: UIView {
     
+    // MARK: - Properties
+    
     weak var delegate: RegisterScreenProtocol?
-    func delegate(delegate: RegisterScreenProtocol) {
-        self.delegate = delegate
-    }
+    
+    //MARK: - UI Elements
     
     private lazy var imageBackGround: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageRegister"))
     private lazy var backButton: Buttoning = DSButtonTitlesAdapter()
@@ -31,6 +34,8 @@ final class RegisterScreen: UIView {
     private lazy var confirmadPasswordTextField: TextFielding = DSTextFieldAdapter()
     private lazy var registerButton: Buttoning = DSButtonAdapter()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -39,6 +44,8 @@ final class RegisterScreen: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Outher Methods
     
     private func configLabel(){
         nameLabel.setDTO(with: .init(text: "Name:"))
@@ -67,6 +74,7 @@ final class RegisterScreen: UIView {
     }
 }
 
+// MARK: - ViewCodeProtocol
 extension RegisterScreen: ViewCodeProtocol {
     func configElementes() {
         [imageBackGround, backButton, nameLabel, nameTextField, emailLabel, emailTextField, passwordLabel, passwordTextField, confirmadPasswordLabel, confirmadPasswordTextField, registerButton].forEach(addSubview)
@@ -128,6 +136,4 @@ extension RegisterScreen: ViewCodeProtocol {
         configTextfield()
         configButton()
     }
-    
-    
 }

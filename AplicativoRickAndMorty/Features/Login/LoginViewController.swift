@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     override func loadView() {
         screen = LoginScreen()
         view = screen
+        screen?.delegate(delegate: self)
     }
     
    
@@ -25,7 +26,25 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+  
     
 }
 
+
+extension LoginViewController: LoginScreenProtocol {
+    func actionRegisterButton() {
+        let vc = RegisterViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func actionForgotPasswordButton() {
+        let vc = ForgotPasswordViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func actionTabBar() {
+        
+    }
+    
+    
+}

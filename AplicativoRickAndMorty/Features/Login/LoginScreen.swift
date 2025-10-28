@@ -8,8 +8,21 @@
 
 import UIKit
 
+
+protocol LoginScreenProtocol: AnyObject{
+    func actionRegisterButton()
+    func actionForgotPasswordButton()
+    func actionTabBar()
+}
+
 final class LoginScreen: UIView {
     
+    weak var delegate: LoginScreenProtocol?
+    func delegate(delegate: LoginScreenProtocol) {
+        self.delegate = delegate
+    }
+    
+    private lazy var imageBackGround: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageLogin"))
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
     private lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
     private lazy var passwordLabel: Labeling = DSLLabelAdapter()
@@ -41,15 +54,15 @@ final class LoginScreen: UIView {
     private func configButton(){
         forgotPasswordButton.setDTO(.init(title: "ForgotPassword?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
         forgotPasswordButton.onClick {
-            
+            self.delegate?.actionForgotPasswordButton()
         }
         loginButton.setDTO(.init(title: "Login?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
         loginButton.onClick {
-            
+            self.delegate?.actionTabBar()
         }
         registerButton.setDTO(.init(title: "Nao tem conta? Registra-se?", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
         registerButton.onClick {
-            
+            self.delegate?.actionRegisterButton()
         }
     }
     
@@ -58,11 +71,16 @@ final class LoginScreen: UIView {
 
 extension LoginScreen: ViewCodeProtocol {
     func configElementes() {
-        [emailLabel, emailTextFiel, passwordLabel, passwordTextFiel, forgotPasswordButton, loginButton, registerButton].forEach(addSubview)
+        [imageBackGround, emailLabel, emailTextFiel, passwordLabel, passwordTextFiel, forgotPasswordButton, loginButton, registerButton].forEach(addSubview)
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
+            
+            imageBackGround.topAnchor.constraint(equalTo: topAnchor),
+            imageBackGround.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageBackGround.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBackGround.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             emailLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 60),
             emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
@@ -95,7 +113,7 @@ extension LoginScreen: ViewCodeProtocol {
     }
     
     func configAdttionalConfigure() {
-        backgroundColor = .darkGray
+        backgroundColor = DSColors.secundaryColor
         configLabel()
         configTextField()
         configButton()

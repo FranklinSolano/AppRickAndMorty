@@ -7,8 +7,20 @@
 
 import UIKit
 
+protocol RegisterScreenProtocol: AnyObject {
+    func actionBackButton()
+    func actionRegisterButton()
+}
+
 final class RegisterScreen: UIView {
     
+    weak var delegate: RegisterScreenProtocol?
+    func delegate(delegate: RegisterScreenProtocol) {
+        self.delegate = delegate
+    }
+    
+    private lazy var imageBackGround: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageRegister"))
+    private lazy var backButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var nameLabel: Labeling = DSLLabelAdapter()
     private lazy var nameTextField: TextFielding = DSTextFieldAdapter()
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
@@ -45,18 +57,31 @@ final class RegisterScreen: UIView {
     private func configButton(){
         registerButton.setDTO(.init(title: "Register", isEnable: true, font: UIFont.systemFont(ofSize: 16)))
         registerButton.onClick {
-            
+            self.delegate?.actionRegisterButton()
+        }
+        
+        backButton.setDTO(.init(title: "Bakc <-", isEnable: true, font: DSFonts.subtitleSemibold16))
+        backButton.onClick {
+            self.delegate?.actionBackButton()
         }
     }
 }
 
 extension RegisterScreen: ViewCodeProtocol {
     func configElementes() {
-        [nameLabel, nameTextField, emailLabel, emailTextField, passwordLabel, passwordTextField, confirmadPasswordLabel, confirmadPasswordTextField, registerButton].forEach(addSubview)
+        [imageBackGround, backButton, nameLabel, nameTextField, emailLabel, emailTextField, passwordLabel, passwordTextField, confirmadPasswordLabel, confirmadPasswordTextField, registerButton].forEach(addSubview)
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
+            
+            imageBackGround.topAnchor.constraint(equalTo: topAnchor),
+            imageBackGround.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageBackGround.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBackGround.trailingAnchor.constraint(equalTo: trailingAnchor),
+            
+            backButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             
             nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor,constant: 60),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 25),
@@ -95,14 +120,10 @@ extension RegisterScreen: ViewCodeProtocol {
             registerButton.heightAnchor.constraint(equalToConstant: 50),
             registerButton.widthAnchor.constraint(equalToConstant: 200)
         ])
-        
-        
-        
-        
     }
     
     func configAdttionalConfigure() {
-        backgroundColor = .darkGray
+        backgroundColor = DSColors.secundaryColor
         configLabel()
         configTextfield()
         configButton()

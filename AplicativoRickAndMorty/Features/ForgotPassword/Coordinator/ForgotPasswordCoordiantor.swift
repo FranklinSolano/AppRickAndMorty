@@ -8,7 +8,9 @@
 import UIKit
 
 //MARK: - Protocol
-protocol ForgotPasswordCoordinating { }
+protocol ForgotPasswordCoordinating {
+    func navigationBackButtonCoordinator()
+}
 
 //MARK: - ForgotPasswordCoordinator
 final class ForgotPasswordCoordinator {
@@ -18,4 +20,9 @@ final class ForgotPasswordCoordinator {
 }
 
 //MARK: - ForgotPasswordCoordinating
-extension ForgotPasswordCoordinator: ForgotPasswordCoordinating { }
+extension ForgotPasswordCoordinator: ForgotPasswordCoordinating {
+    func navigationBackButtonCoordinator() {
+        guard let navigation else { return}
+        navigation.popViewController(animated: true)
+    }
+}

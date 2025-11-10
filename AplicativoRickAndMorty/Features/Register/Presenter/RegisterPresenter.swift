@@ -8,7 +8,9 @@
 import Foundation
 
 //MARK: - RegisterPresenting
-protocol RegisterPresenting { }
+protocol RegisterPresenting {
+    func navigationBackButtonPresenter()
+}
 
 //MARK: - RegisterPresenter
 final class RegisterPresenter {
@@ -26,4 +28,8 @@ final class RegisterPresenter {
 }
 
 //MARK: - RegisterPresenting
-extension RegisterPresenter: RegisterPresenting { }
+extension RegisterPresenter: RegisterPresenting {
+    func navigationBackButtonPresenter() {
+        coordinator?.navigationBackButtonCoordinator()
+    }
+}

@@ -8,7 +8,9 @@
 import Foundation
 
 //MARK: - Protocol
-protocol ForgotPasswordPresenting { }
+protocol ForgotPasswordPresenting {
+    func navigationBackButtonPresenter()
+}
 
 //MARK: - ForgotPasswordPresenter
 final class ForgotPasswordPresenter {
@@ -27,4 +29,8 @@ final class ForgotPasswordPresenter {
 }
 
 //MARK: - ForgotPasswordPresenting
-extension ForgotPasswordPresenter: ForgotPasswordPresenting { }
+extension ForgotPasswordPresenter: ForgotPasswordPresenting {
+    func navigationBackButtonPresenter() {
+        coordinator?.navigationBackButtonCoordinator()
+    }
+}

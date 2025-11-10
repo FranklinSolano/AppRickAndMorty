@@ -8,14 +8,16 @@
 import Foundation
 
 //MARK: - Protocol
-protocol RegisterInteracting { }
+protocol RegisterInteracting {
+    func navigationBackButtonInteractor()
+}
 
 //MARK: - RegisterInteractor
 final class RegisterInteractor {
     
     //MARK: - Properties
     
-    let presenter: RegisterPresenting?
+    let presenter: RegisterPresenting
     private let service: RegisterServicing?
     
     //MARK: - Init
@@ -27,4 +29,8 @@ final class RegisterInteractor {
 }
 
 //MARK: - RegisterInteracting
-extension RegisterInteractor: RegisterInteracting { }
+extension RegisterInteractor: RegisterInteracting {
+    func navigationBackButtonInteractor() {
+        presenter.navigationBackButtonPresenter()
+    }
+}

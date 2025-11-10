@@ -49,7 +49,7 @@ extension LoginViewController: LoginScreenProtocol {
     }
     
     func actionForgotPasswordButton() {
-        // navigationController?.pushViewController(ForgotPasswordViewController(), animated: true)
+        interactor.navigationForgotPasswordInteractor()
     }
     
     func actionTabBar() { }

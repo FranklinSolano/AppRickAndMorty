@@ -45,7 +45,7 @@ final class ForgotPasswordViewController: UIViewController {
 //MARK: - ForgotPasswordScreenProtocol
 extension ForgotPasswordViewController: ForgotPasswordScreenProtocol {
     func actionBackButton() {
-        navigationController?.popViewController(animated: true)
+        interactor.navigationBackButtonInteractor()
     }
     
     func actionEnterButton() { }

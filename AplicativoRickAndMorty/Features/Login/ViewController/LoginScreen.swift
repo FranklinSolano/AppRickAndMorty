@@ -25,8 +25,8 @@ final class LoginScreen: UIView {
     }
     
     //MARK: - UI Elements
-    
-    private lazy var imageBackGround: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageLogin"))
+        
+    private lazy var imageBackGroundImage: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageLogin"))
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
     private lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
     private lazy var passwordLabel: Labeling = DSLLabelAdapter()
@@ -34,7 +34,7 @@ final class LoginScreen: UIView {
     private lazy var forgotPasswordButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var loginButton: Buttoning = DSButtonAdapter()
     private lazy var registerButton: Buttoning = DSButtonTitlesAdapter()
-    
+
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -78,15 +78,17 @@ final class LoginScreen: UIView {
 //MARK: - ViewCodeProtocol
 extension LoginScreen: ViewCodeProtocol {
     func configElementes() {
-        [imageBackGround, emailLabel, emailTextFiel, passwordLabel, passwordTextFiel, forgotPasswordButton, loginButton, registerButton].forEach(addSubview)
+        [imageBackGroundImage, emailLabel, emailTextFiel, passwordLabel, passwordTextFiel, forgotPasswordButton, loginButton, registerButton].forEach(addSubview)
     }
     
     func configConstraints() {
         NSLayoutConstraint.activate([
-            imageBackGround.topAnchor.constraint(equalTo: topAnchor),
-            imageBackGround.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageBackGround.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageBackGround.trailingAnchor.constraint(equalTo: trailingAnchor),
+        
+            
+            imageBackGroundImage.topAnchor.constraint(equalTo: topAnchor),
+            imageBackGroundImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageBackGroundImage.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBackGroundImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             emailLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 60),
             emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),

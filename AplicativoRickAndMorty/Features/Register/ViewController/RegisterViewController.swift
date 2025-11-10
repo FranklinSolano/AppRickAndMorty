@@ -46,7 +46,7 @@ final class RegisterViewController: UIViewController {
 //MARK: - RegisterScreenProtocol
 extension RegisterViewController: RegisterScreenProtocol {
     func actionBackButton() {
-        navigationController?.popViewController(animated: true)
+        interactor.navigationBackButtonInteractor()
     }
     
     func actionRegisterButton() {

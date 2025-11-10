@@ -10,6 +10,7 @@ import UIKit
 //MARK: - Protocol
 protocol LoginCoordinating {
     func navigationRegisterCoordinator()
+    func navigationForgotPasswordCoordinator()
 }
 
 //MARK: - LoginCoordinator
@@ -21,6 +22,13 @@ final class LoginCoordinator {
 
 //MARK: - LoginCoordinating
 extension LoginCoordinator: LoginCoordinating {
+    func navigationForgotPasswordCoordinator() {
+        guard let navigation else { return }
+        let factory = ForgotPasswordFactory()
+        let vc = factory.makeFactory(navigationController: navigation)
+        navigation.pushViewController(vc, animated: true)
+    }
+    
     func navigationRegisterCoordinator() {
         guard let navigation else { return }
         let factory = RegisterFactory()

@@ -10,6 +10,7 @@ import Foundation
 //MARK: - Protocol
 protocol LoginPresenting {
     func navigationRegisterPresenter()
+    func navigationForgotPasswordPresenter()
 }
 
 //MARK: - LoginPresenter
@@ -28,6 +29,10 @@ final class LoginPresenter {
 
 //MARK: - LoginPresenting
 extension LoginPresenter: LoginPresenting {
+    func navigationForgotPasswordPresenter() {
+        coordinator.navigationForgotPasswordCoordinator()
+    }
+    
     func navigationRegisterPresenter() {
         coordinator.navigationRegisterCoordinator()
     }

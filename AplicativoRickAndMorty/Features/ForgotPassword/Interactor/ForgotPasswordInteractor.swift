@@ -8,7 +8,10 @@
 import Foundation
 
 //MARK: - Protocol
-protocol ForgotPasswordInteracting { }
+protocol ForgotPasswordInteracting {
+    func navigationBackButtonInteractor()
+    
+}
 
 //MARK: - ForgotPasswordInteractor
 final class ForgotPasswordInteractor {
@@ -27,4 +30,8 @@ final class ForgotPasswordInteractor {
 }
 
 //MARK: - ForgotPasswordInteracting
-extension ForgotPasswordInteractor: ForgotPasswordInteracting { }
+extension ForgotPasswordInteractor: ForgotPasswordInteracting {
+    func navigationBackButtonInteractor() {
+        presenter?.navigationBackButtonPresenter()
+    }
+}

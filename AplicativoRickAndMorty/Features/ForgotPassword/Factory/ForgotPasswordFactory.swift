@@ -18,6 +18,7 @@ final class ForgotPasswordFactory {
         let presenter = ForgotPasswordPresenter(view: nil, coordinator: coordinator)
         let interactor = ForgotPasswordInteractor(presenter: presenter, service: service)
         let forgotVC = ForgotPasswordViewController(interactor: interactor)
+        presenter.view = forgotVC
         return forgotVC
     }
     

@@ -8,7 +8,10 @@
 import UIKit
 
 //MARK: - Protocol
-protocol ForgotPasswordViewControllerDisplay: AnyObject { }
+protocol ForgotPasswordViewControllerDisplay: AnyObject {
+    func showAlert(title: String,message: String)
+    
+}
 
 //MARK: - ForgotPasswordViewController
 final class ForgotPasswordViewController: UIViewController {
@@ -48,8 +51,15 @@ extension ForgotPasswordViewController: ForgotPasswordScreenProtocol {
         interactor.navigationBackButtonInteractor()
     }
     
-    func actionEnterButton() { }
+    func actionEnterButton() {
+        interactor.resetPasswordUserInteractor(email: screen?.emailTextField.text)
+        
+    }
 }
 
 //MARK: - ForgotPasswordViewControllerDisplay
-extension ForgotPasswordViewController: ForgotPasswordViewControllerDisplay { }
+extension ForgotPasswordViewController: ForgotPasswordViewControllerDisplay {
+    func showAlert(title: String, message: String) {
+        print(title,message)
+    }
+}

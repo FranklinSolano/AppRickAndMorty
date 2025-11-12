@@ -29,7 +29,7 @@ final class ForgotPasswordScreen: UIView {
     private lazy var backButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var titleLabel: Labeling = DSLLabelAdapter()
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
-    private lazy var emailTextField: TextFielding = DSTextFieldAdapter()
+    lazy var emailTextField: TextFielding = DSTextFieldAdapter()
     private lazy var enterButton: Buttoning = DSButtonAdapter()
     
     //MARK: - Init

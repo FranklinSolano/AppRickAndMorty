@@ -10,6 +10,8 @@ import Foundation
 //MARK: - RegisterPresenting
 protocol RegisterPresenting {
     func navigationBackButtonPresenter()
+    func showAlertSuccessPresenter()
+    func showAlertFailPresenter(_ error: AuthenticationError)
 }
 
 //MARK: - RegisterPresenter
@@ -29,6 +31,15 @@ final class RegisterPresenter {
 
 //MARK: - RegisterPresenting
 extension RegisterPresenter: RegisterPresenting {
+    func showAlertSuccessPresenter() {
+        view?.showAlert(title: "Sucesoo", message: "Cadastro realizado com Sucesso!")
+    }
+    
+    func showAlertFailPresenter(_ error: AuthenticationError) {
+        view?.showAlert(title: "Atencao", message: error.localizedDescription)
+    }
+    
+    
     func navigationBackButtonPresenter() {
         coordinator?.navigationBackButtonCoordinator()
     }

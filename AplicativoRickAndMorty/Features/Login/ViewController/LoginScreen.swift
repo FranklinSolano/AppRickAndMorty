@@ -28,9 +28,9 @@ final class LoginScreen: UIView {
         
     private lazy var imageBackGroundImage: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageLogin"))
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
-    private lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
+     lazy var emailTextFiel: TextFielding = DSTextFieldAdapter()
     private lazy var passwordLabel: Labeling = DSLLabelAdapter()
-    private lazy var passwordTextFiel: TextFielding = DSTextFieldAdapter()
+     lazy var passwordTextFiel: TextFielding = DSTextFieldAdapter()
     private lazy var forgotPasswordButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var loginButton: Buttoning = DSButtonAdapter()
     private lazy var registerButton: Buttoning = DSButtonTitlesAdapter()

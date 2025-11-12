@@ -25,13 +25,13 @@ final class RegisterScreen: UIView {
     private lazy var imageBackGround: ImageViewing = DSImageViewAdapter(image: UIImage(named: "imageRegister"))
     private lazy var backButton: Buttoning = DSButtonTitlesAdapter()
     private lazy var nameLabel: Labeling = DSLLabelAdapter()
-    private lazy var nameTextField: TextFielding = DSTextFieldAdapter()
+    lazy var nameTextField: TextFielding = DSTextFieldAdapter()
     private lazy var emailLabel: Labeling = DSLLabelAdapter()
-    private lazy var emailTextField: TextFielding = DSTextFieldAdapter()
+    lazy var emailTextField: TextFielding = DSTextFieldAdapter()
     private lazy var passwordLabel: Labeling = DSLLabelAdapter()
-    private lazy var passwordTextField: TextFielding = DSTextFieldAdapter()
+    lazy var passwordTextField: TextFielding = DSTextFieldAdapter()
     private lazy var confirmadPasswordLabel: Labeling = DSLLabelAdapter()
-    private lazy var confirmadPasswordTextField: TextFielding = DSTextFieldAdapter()
+    var confirmadPasswordTextField: TextFielding = DSTextFieldAdapter()
     private lazy var registerButton: Buttoning = DSButtonAdapter()
     
     // MARK: - Init

@@ -11,6 +11,8 @@ import Foundation
 protocol LoginPresenting {
     func navigationRegisterPresenter()
     func navigationForgotPasswordPresenter()
+    func showAlertSuccessPresenter()
+    func showAlertFailurePresenter(_ error: AuthenticationError)
 }
 
 //MARK: - LoginPresenter
@@ -29,6 +31,14 @@ final class LoginPresenter {
 
 //MARK: - LoginPresenting
 extension LoginPresenter: LoginPresenting {
+    func showAlertSuccessPresenter() {
+        view?.showAlert(title: "Sucesso", message: "Login realizado com sucesso!")
+    }
+    
+    func showAlertFailurePresenter(_ error: AuthenticationError) {
+        view?.showAlert(title: "Atencao", message: error.localizedDescription)
+    }
+    
     func navigationForgotPasswordPresenter() {
         coordinator.navigationForgotPasswordCoordinator()
     }

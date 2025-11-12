@@ -8,7 +8,9 @@
 import UIKit
 
 //MARK: - Protocol
-protocol LoginViewControllerDisplay: AnyObject { }
+protocol LoginViewControllerDisplay: AnyObject {
+    func showAlert(title: String, message: String)
+}
 
 //MARK: - LoginViewController
 final class LoginViewController: UIViewController {
@@ -52,8 +54,17 @@ extension LoginViewController: LoginScreenProtocol {
         interactor.navigationForgotPasswordInteractor()
     }
     
-    func actionTabBar() { }
+    func actionTabBar() {
+        
+        interactor.loginUserInteractor(email: screen?.emailTextFiel.text,
+                                       password: screen?.passwordTextFiel.text)
+        
+    }
 }
 
 //MARK: - LoginViewControllerDisplay
-extension LoginViewController: LoginViewControllerDisplay { }
+extension LoginViewController: LoginViewControllerDisplay {
+    func showAlert(title: String, message: String) {
+        print(title,message)
+    }
+}

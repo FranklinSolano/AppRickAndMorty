@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Protocols
 protocol RegisterViewControllerDisplay: AnyObject{
-    
+    func showAlert(title: String, message: String)
 }
 
 //MARK: - RegisterViewController
@@ -50,12 +50,22 @@ extension RegisterViewController: RegisterScreenProtocol {
     }
     
     func actionRegisterButton() {
-        
+        interactor.registerUser(
+                  name: screen?.nameTextField.text,
+                  email: screen?.emailTextField.text,
+                  password: screen?.passwordTextField.text,
+                  confirmPassword: screen?.confirmadPasswordTextField.text)
     }
 
 }
 
 //MARK: - RegisterViewControllerDisplay
 extension RegisterViewController: RegisterViewControllerDisplay {
+    func showAlert(title: String, message: String) {
+        print(title,message)
+    }
+    
+    
+    
     
 }
